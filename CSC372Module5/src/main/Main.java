@@ -7,7 +7,7 @@ public class Main {
 	public static void product(int count, double product, Scanner scnr) {
 		
 		if (count == 5) {
-			System.out.println("The product of your numbers is: " + product);
+			System.out.printf("The product of your numbers is: %.2f", product);
 			return;
 		}
 		System.out.println("Please enter number " + (count + 1) + ": ");

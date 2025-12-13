@@ -1,28 +1,30 @@
 package main;
 
 import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class Main {
-	ArrayList<Double> userList = new ArrayList<Double>();
-	public static void product(int userNum, double userProduct, Scanner scnr) {
+	public static void product(int count, double userProduct, Scanner scnr) {
 		
-		if (userNum < 5) {
-			System.out.println("Please enter a number: ");
-			double num = scnr.nextDouble();
+		if (count == 5) {
+			System.out.println("Operation complete. Final product: " + userProduct);
+			return;
+		}
+		System.out.println("Please enter number " + (count + 1) + ": ");
+		
+		try {
+			double num = scnr.nextDouble();	
+			product(count + 1, userProduct * num, scnr);
 			
-			userProduct *= num;
-			
-			product(userNum + 1, userProduct, scnr);
-		} else {
-			System.out.println("Operation complete. Product of inputs is: " + userProduct);
+		} catch (InputMismatchException e) {
+			System.out.println("Please enter a valid number.");
+			scnr.next();
+			product(count, userProduct, scnr);
 		}
 	}	
 	public static void main(String[] args) {
-		Scanner scnr = new Scanner(System.in);
-		
+		Scanner scnr = new Scanner(System.in);	
 		product(0, 1, scnr);	
-		
 		scnr.close();
 	}
 }

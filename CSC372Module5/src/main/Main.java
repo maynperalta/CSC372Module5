@@ -4,22 +4,22 @@ import java.util.Scanner;
 import java.util.InputMismatchException;
 
 public class Main {
-	public static void product(int count, double userProduct, Scanner scnr) {
+	public static void product(int count, double product, Scanner scnr) {
 		
 		if (count == 5) {
-			System.out.println("Operation complete. Final product: " + userProduct);
+			System.out.println("The product of your numbers is: " + product);
 			return;
 		}
 		System.out.println("Please enter number " + (count + 1) + ": ");
 		
 		try {
 			double num = scnr.nextDouble();	
-			product(count + 1, userProduct * num, scnr);
+			product(count + 1, product * num, scnr);
 			
 		} catch (InputMismatchException e) {
 			System.out.println("Please enter a valid number.");
 			scnr.next();
-			product(count, userProduct, scnr);
+			product(count, product, scnr);
 		}
 	}	
 	public static void main(String[] args) {
